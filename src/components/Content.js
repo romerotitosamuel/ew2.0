@@ -3,6 +3,7 @@ import ReactPlayer from 'react-player'
 import { downHalfTone } from './functions'
 import useSound from 'use-sound'
 import click1 from '../styles/sounds/click1.mp3'
+import IconHome from './icons/IconHome'
 
 const Content = () => {
     const [song] = useState(JSON.parse(localStorage.getItem('song')))
@@ -79,7 +80,8 @@ const Content = () => {
                 </div>
             </div>
             <div className="blockButtons">
-                <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}>home</i></div>
+                
+                <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}><IconHome/></i></div>
                 <div onClick={() => setChordOn(false)}><i style={{ borderBottom: chordOn ? 'none' : 'solid' }} className="material-icons" >description</i></div>
                 <div onClick={() => setChordOn(true)}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" >music_note</i></div>
                 <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" >text_rotate_vertical</i></div>

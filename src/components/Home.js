@@ -3,6 +3,8 @@ import firebaseApp from '../credentials'
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import logo50 from '../styles/images/logoWor50px.png'
+import LogoMain from './icons/LogoMain'
+
 const db = getFirestore(firebaseApp)
 
 const Home = () => {
@@ -55,7 +57,8 @@ const Home = () => {
     return (<>
         <div className='homePage'>
             <div className='homeHeader'>
-                <img src={logo50} alt="No hay logo" />
+            
+                {/*<img src={logo50} alt="No hay logo" />*/}
             </div>
 
             <div className="domHome" style={{display: apps ? 'none' : 'block'}}>
