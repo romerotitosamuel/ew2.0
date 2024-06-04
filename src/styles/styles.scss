@@ -1,0 +1,21 @@
+@import 'variables';
+@import 'lab' ;
+@import 'add';
+@import 'home';
+@import 'content';
+@import 'lib';
+
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+background: black;    
+    
+}

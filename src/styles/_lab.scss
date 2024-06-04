@@ -1,0 +1,87 @@
+.labBody {
+    display: grid;
+    grid-template-columns: 20% 40% 40%;
+    background-color: secondaryColor;
+
+    .labList {
+        grid-column: 1;
+        font-size: 100%;
+        color: white;
+        .listFlex {
+            padding: 3px;
+            border-bottom: solid 0.3px;
+            border-color: $primaryColor;
+            display: flex;
+            .iconBlock {
+                min-width: 40px;
+            }
+            i {
+                color: $primaryColor;
+                font-size: 100%;
+                cursor: pointer;
+            }
+        }
+    }
+    .labShow {
+        grid-column: 2;
+        font-size: 100%;
+        padding: 10px;
+        background-color: $backgroundContColor;
+        .prevEncabezado {
+            min-height: 70px;
+            background-color: $secondaryColor;
+        }
+        h3 {
+            i{
+                color: $primaryColor;
+                cursor: pointer;
+            }
+        }
+        .prevContenido {
+            pre {
+                font-family: 'Ubuntu', sans-serif;
+                background-color: black;
+                color: white;
+            }
+            
+            .chord {
+                color: $primaryColor;
+                
+            }
+
+            
+        }
+    }
+    .labEdit {
+        grid-column: 3;
+        padding: 3px;
+        background-color: $backgroundContColor;
+        color: $primaryColor;
+        height: 100%;
+        h4 {
+            text-align: center;
+            background-color: $secondaryColor;
+        }
+        form {
+            color: white;
+            input {
+                width: 100%;
+            }
+            textarea {
+                width: 100%;
+                
+                font-family: 'Ubuntu', sans-serif;
+            }
+            button {
+                border: none;
+                background-color: indigo;
+                color: white;
+                border-radius: 7px;
+                padding: 5px;
+            }
+            button:hover {
+                background-color: red;
+            }
+        }
+    }
+}

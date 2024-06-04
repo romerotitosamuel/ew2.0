@@ -1,0 +1,57 @@
+.libPage {
+    max-width: 800px;
+    margin: auto;
+    .headerLib{
+        position: sticky;
+        top: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        height: 50px;
+        border-bottom: $primaryColor 1px solid;
+
+        
+
+        .material-icons {
+            color: $primaryColor;
+            margin-left: 10px;
+        }
+        
+        input {
+            text-decoration: none;
+            width: 90%;
+            background-color: black;
+            color: white;
+            border: white solid 1px;
+            border-radius: 5px;
+            margin-left: 15px;
+            margin-right: 15px; 
+            height: 25px;
+            outline: none;
+                
+        }
+        input::placeholder {
+            color: gray;
+            padding: 5px;
+            margin-left: 10px;
+
+            
+        }
+        
+    }
+    .libArea {
+        padding: 15px;
+        .link {
+            text-decoration: none;
+            .filaSong {
+                color: white;
+                border-bottom: gray solid 1px;
+                padding: 10px;
+                small {
+                    color: gray;
+                }
+            }
+        }
+    }
+}
