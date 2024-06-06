@@ -3,6 +3,7 @@ import './styles/styles.scss'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Lab from './components/Lab'
 import Add from './components/Add'
+import Add2 from './components/Add2'
 import Home from './components/Home'
 import Content from './components/Content'
 import Lib from './components/Lib'
@@ -33,6 +34,7 @@ function App() {
           <Route path="/lab" element={<Lab />} />
           <Route path="/content" element={<Content />} />
           <Route path="/lib" element={<Lib />} />
+          <Route path="/add2" element={<Add2 />} />
 
         </Routes>
 

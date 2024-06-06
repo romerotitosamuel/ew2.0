@@ -79,6 +79,9 @@ const Content = () => {
                     </pre>
                 </div>
             </div>
+            <div className='vidSong'> 
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HSnsyv1KCQA?si=1vf9PqRhOt7TuSdN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
             <div className="blockButtons">
 
                 <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}><IconHome /></i></div>
