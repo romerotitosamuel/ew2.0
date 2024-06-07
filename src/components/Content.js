@@ -5,11 +5,14 @@ import useSound from 'use-sound'
 import click1 from '../styles/sounds/click1.mp3'
 import IconHome from './icons/IconHome'
 
+let widthW = window.screen.width
+
 const Content = () => {
     const [song] = useState(JSON.parse(localStorage.getItem('song')))
     const [chordOn, setChordOn] = useState(false)
     const [metro, setMetro] = useState(true)
     const [idTimer, setIdTimer] = useState(null)
+    const [vidOn, setVidOn] = useState(true)
 
     const songArray = song.letra.split(['\n\n'])
     const acordeArray = song.acordes.split(['\n'])
@@ -53,6 +56,17 @@ const Content = () => {
                     <ReactPlayer className='videoYT' url={`https://www.youtube.com/watch?v=${song.url}`} height='70px' width='150px' controls={true} light={true} playing={true} loop={true} />
                  </div> */}
             </div>
+            
+                <iframe
+                    width={widthW}
+                    height="70px"
+                    src={`https://www.youtube.com/embed/${song.url}`}
+                    frameborder="0"
+                    style={{ display: vidOn ? "none" : "block" }}
+                >
+                </iframe>
+
+            
             <div className="contentArea" style={{ height: '100%' }}>
                 <div className="contentLetra" style={{ display: chordOn ? "none" : "block" }}>
                     <pre>
@@ -79,9 +93,7 @@ const Content = () => {
                     </pre>
                 </div>
             </div>
-            <div className='vidSong'> 
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/HSnsyv1KCQA?si=1vf9PqRhOt7TuSdN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
+            
             <div className="blockButtons">
 
                 <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}><IconHome /></i></div>
@@ -89,7 +101,7 @@ const Content = () => {
                 <div onClick={() => setChordOn(true)}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" >music_note</i></div>
                 <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" >text_rotate_vertical</i></div>
                 <div style={{ display: song.bpm ? 'block' : 'none' }}><i className="material-icons" onClick={() => metronome(metro)}>{metro ? 'alarm_on' : 'alarm_off'}</i></div>
-                <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}>play_circle_outline</i></div>
+                <div onClick={() => setVidOn(!vidOn)}><i className="material-icons" >play_circle_outline</i></div>
                 <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}>arrow_forward</i></div>
 
             </div>
