@@ -2,6 +2,7 @@
     max-width: 800px;
     margin: auto;
     display: grid;
+   
     .homeHeader {
         position: sticky;
         top: 0;
@@ -16,6 +17,7 @@
         }
     }
     .domHome {
+        
         margin-top: 10px;
         color: white;
         padding: 10px;
@@ -33,38 +35,17 @@
         }
         
     }
-    .aplications {
-        padding-top: 20px;
-        margin: auto;
-        max-width: 700px;
-        .contApp {
-            padding: 8px;
-            display: flex;
-            align-items: center;
-            padding-left: 20%;
-
-            img {
-                max-height: 70px;
-                border-radius: 15px;
-            }
-            a {
-                color: gray;
-                text-decoration: none;
-                margin-left: 15px;
-
-            }
-        }
-    }
+   
     .youtubeArea {
         cursor: pointer;
         user-select: none;
         text-decoration: none;
-        margin-top: 30px;
+        margin-top: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        margin-bottom: 60px;
+        margin-bottom: 10px;
         .material-icons {
             color: red;
             margin-right: 10px;
@@ -74,19 +55,25 @@
     }
     .footerHome {
         cursor: pointer;
-        background-color: black;
+        
         height: 50px;
+        
         color: $primaryColor;
         position: fixed;
-        bottom: 0;
-        border-top: $primaryColor solid 1px;
+        top: 0;
+        right: 0;
+        border-top: none;
         display: flex;
-        justify-content: space-around;
+        justify-content: right;
         align-items: center;
-        width: 100%;
+        width: 50px;
         max-width: 800px;
         .material-icons {
+            
             color: $primaryColor;
+            margin-top: 15px;
+            margin-right: 15px;
+            
         }
 
     }

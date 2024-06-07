@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import ReactPlayer from 'react-player'
 import { downHalfTone } from './functions'
 import useSound from 'use-sound'
 import click1 from '../styles/sounds/click1.mp3'
 import IconHome from './icons/IconHome'
+import IconMusic from './icons/IconMusic'
+import IconLetter from './icons/IconLetter'
+import IconDown from './icons/IconDown'
+import IconYoutube from './icons/IconYoutube'
 
-let widthW = window.screen.width
+
 
 const Content = () => {
     const [song] = useState(JSON.parse(localStorage.getItem('song')))
@@ -14,10 +17,15 @@ const Content = () => {
     const [idTimer, setIdTimer] = useState(null)
     const [vidOn, setVidOn] = useState(true)
 
+
+    
     const songArray = song.letra.split(['\n\n'])
     const acordeArray = song.acordes.split(['\n'])
     let son = null
     const [play] = useSound(click1)
+    let widthW = window.screen.width
+    
+    
 
     const ejecutarBajar = () => {
         let contenido = document.getElementsByClassName('chord')
@@ -52,18 +60,15 @@ const Content = () => {
                     <div><small><small>{song.bpm ? `${song.bpm} bpm` : ""}</small></small></div>
 
                 </div>
-                {/*<div className='vidRight'>
-                    <ReactPlayer className='videoYT' url={`https://www.youtube.com/watch?v=${song.url}`} height='70px' width='150px' controls={true} light={true} playing={true} loop={true} />
-                 </div> */}
             </div>
-            
                 <iframe
                     width={widthW}
                     height="70px"
                     src={`https://www.youtube.com/embed/${song.url}`}
                     frameborder="0"
-                    style={{ display: vidOn ? "none" : "block" }}
-                >
+                    autohide="2"
+                    fs="0"
+                    style={{ display: vidOn ? "none" : "block" }}>
                 </iframe>
 
             
@@ -97,12 +102,12 @@ const Content = () => {
             <div className="blockButtons">
 
                 <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}><IconHome /></i></div>
-                <div onClick={() => setChordOn(false)}><i style={{ borderBottom: chordOn ? 'none' : 'solid' }} className="material-icons" >description</i></div>
-                <div onClick={() => setChordOn(true)}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" >music_note</i></div>
-                <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" >text_rotate_vertical</i></div>
+                <div onClick={() => setChordOn(false)}><i style={{ borderBottom: chordOn ? 'none' : 'solid' }} className="material-icons" ><IconLetter/></i></div>
+                <div onClick={() => setChordOn(true)}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" ><IconMusic/></i></div>
+                <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" ><IconDown/></i></div>
                 <div style={{ display: song.bpm ? 'block' : 'none' }}><i className="material-icons" onClick={() => metronome(metro)}>{metro ? 'alarm_on' : 'alarm_off'}</i></div>
-                <div onClick={() => setVidOn(!vidOn)}><i className="material-icons" >play_circle_outline</i></div>
-                <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}>arrow_forward</i></div>
+                <div onClick={() => setVidOn(!vidOn)}><i className="material-icons" ><IconYoutube/></i></div>
+                
 
             </div>
         </div>

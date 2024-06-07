@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getFirestore, query, collection, orderBy, getDocs } from 'firebase/firestore'
 import firebaseApp from '../credentials'
+import IconHome from './icons/IconHome'
 const db = getFirestore(firebaseApp)
 
 const Lib = () => {
@@ -31,7 +32,7 @@ const Lib = () => {
         <div className="libPage">
             <div className="headerLib">
 
-                <Link to='/'><i className="material-icons" >home</i></Link>
+                <Link to='/'><i className="material-icons" ><IconHome/></i></Link>
                 <input autoFocus type="text" onChange={(e) => { searchingTitle(e.target.value) }} name='searchInput' placeholder='&nbsp;Buscar' />
             </div>
             <div className="libArea">

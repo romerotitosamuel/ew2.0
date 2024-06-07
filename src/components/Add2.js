@@ -10,6 +10,7 @@ const Add = () => {
 
     const [songs, setSongs] = useState([])
     const [songsSab, setSongsSab] = useState([])
+    const [wordFilter, setWordFilter] = useState('')
 
     const getSongs = async () => {
         const songsSnap = await getDocs(query(collection(db, "canciones"), orderBy("titulo")))
@@ -30,6 +31,9 @@ const Add = () => {
             setSongsSab(songsSab => [...songsSab , songWId])
         })
 
+    }
+    const searchingTitle = (e) => {
+        setWordFilter(e)
     }
     useEffect( ()=> getSongsSab(), [])
 
@@ -71,9 +75,9 @@ const Add = () => {
             </div>
 
             <br /><hr /> <br />
-
+            <input autoFocus type="text" onChange={(e) => { searchingTitle(e.target.value) }} name='searchInput' placeholder='&nbsp;Buscar' />
             <div className="allSongs">
-                {songs.map((s) => {
+                {songs.filter((r) => r.titulo.toUpperCase().includes(wordFilter.toUpperCase()) === true).map((s) => {
                     return (<div key={s.id} className='blockList'>
                         <div>{s.titulo}<small> - {s.artista}</small></div>
                         <i className="material-icons" onClick={() => addSong(s.id)}>add</i>

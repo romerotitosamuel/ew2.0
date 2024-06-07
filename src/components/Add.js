@@ -10,6 +10,7 @@ const Add = () => {
 
     const [songs, setSongs] = useState([])
     const [songsDom, setSongsDom] = useState([])
+    const [wordFilter, setWordFilter] = useState('')
 
     const getSongs = async () => {
         const songsSnap = await getDocs(query(collection(db, "canciones"), orderBy("titulo")))
@@ -24,14 +25,17 @@ const Add = () => {
     const getSongsDom = async () => {
         let arrayDomSnap = await getDoc(doc(db, 'domingo', 'listDom'))
         let arrayDom = arrayDomSnap.data().dom
-        arrayDom.forEach( async (s) => {
+        arrayDom.forEach(async (s) => {
             let songSnap = await getDoc(doc(db, 'canciones', s))
-            let songWId = Object.assign(songSnap.data(), {id: s})
-            setSongsDom(songsDom => [...songsDom , songWId])
+            let songWId = Object.assign(songSnap.data(), { id: s })
+            setSongsDom(songsDom => [...songsDom, songWId])
         })
 
     }
-    useEffect( ()=> getSongsDom(), [])
+    const searchingTitle = (e) => {
+        setWordFilter(e)
+    }
+    useEffect(() => getSongsDom(), [])
 
     const addSong = async (s) => {
         let arrayDomSnap = await getDoc(doc(db, 'domingo', 'listDom'))
@@ -61,21 +65,21 @@ const Add = () => {
                 <i className='material-icons' onClick={() => cleanSongs()}>playlist_remove</i>
 
             </div>
-
             <div className='addAdded'>
 
-                {songsDom.map( (s) => {
-                    return( <div className='cancionesAdded' key={s.id}>
+                {songsDom.map((s) => {
+                    return (<div className='cancionesAdded' key={s.id}>
                         {s.titulo}<small> - {s.artista}</small>
-                    </div> )
+                    </div>)
                 })
                 }
             </div>
 
             <br /><hr /> <br />
+            <input autoFocus type="text" onChange={(e) => { searchingTitle(e.target.value) }} name='searchInput' placeholder='&nbsp;Buscar' />
 
             <div className="allSongs">
-                {songs.map((s) => {
+                {songs.filter((r) => r.titulo.toUpperCase().includes(wordFilter.toUpperCase()) === true).map((s) => {
                     return (<div key={s.id} className='blockList'>
                         <div>{s.titulo}<small> - {s.artista}</small></div>
                         <i className="material-icons" onClick={() => addSong(s.id)}>add</i>
