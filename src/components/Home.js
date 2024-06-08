@@ -11,21 +11,17 @@ const Home = () => {
 
     const [songsDom, setSongsDom] = useState([])
     const [songsSab, setSongsSab] = useState([])
-    let paraLocal = []
-    let paraLocal2 = []
 
     //PARA TRAER CANCIONES DEL DOMINGO
     const getSongsDom = async () => {
 
         const arraySnap = await getDoc(doc(db, 'domingo', 'listDom'))
         const arraySongs = arraySnap.data().dom
-        
 
         arraySongs.forEach(async (s) => {
             const songSnap = await getDoc(doc(db, 'canciones', s))
             const songWId = Object.assign(songSnap.data(), { id: s })
             setSongsDom(songsDom => [...songsDom, songWId])
-            paraLocal.push(songWId)
         })
     }
     //PARA TRAER CANCIONES DEL SABADO
@@ -33,13 +29,11 @@ const Home = () => {
 
         const arraySnap = await getDoc(doc(db, 'sabado', 'listSab'))
         const arraySongs = arraySnap.data().sab
-        
 
         arraySongs.forEach(async (s) => {
             const songSnap = await getDoc(doc(db, 'canciones', s))
             const songWId = Object.assign(songSnap.data(), { id: s })
             setSongsSab(songsSab => [...songsSab, songWId])
-            paraLocal2.push(songWId)
         })
     }
 
@@ -49,20 +43,17 @@ const Home = () => {
     }
     useEffect(() => getSongsDom(), [])
     useEffect(() => getSongsSab(), [])
-    
 
-localStorage.setItem("nextDom", JSON.stringify(songsDom))
     //if (window.navigator.onLine) { localStorage.setItem('localSongsDom', JSON.stringify(songsDom)) }
-    
+
     return (<>
         <div className='homePage'>
             <div className='homeHeader'>
-
                 <img src={logo600} alt="No hay logo" />
+                <Link to='/lib'><i className="material-icons" ><IconLibrary /></i></Link>
             </div>
 
             <div className="domHome" >
-
                 {
                     songsDom.map((s) => {
                         return (
@@ -81,9 +72,8 @@ localStorage.setItem("nextDom", JSON.stringify(songsDom))
                 <i className="material-icons" >play_circle_outline</i>
                 <div>Playlist - Youtube Music</div>
             </a  >
-            
-            <div className="domHome" >
 
+            <div className="domHome" >
                 {
                     songsSab.map((s) => {
                         return (
@@ -96,9 +86,6 @@ localStorage.setItem("nextDom", JSON.stringify(songsDom))
                         )
                     })
                 }
-            </div>
-            <div className="footerHome">
-                <Link to='/lib'><i className="material-icons" ><IconLibrary/></i></Link>
             </div>
         </div>
     </>)

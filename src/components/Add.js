@@ -42,7 +42,10 @@ const Add = () => {
         let arrayDom = arrayDomSnap.data().dom
         arrayDom.push(s)
         await setDoc(doc(db, 'domingo', 'listDom'), { dom: arrayDom })
-        window.location.reload()
+        
+        document.getElementById('deletear').innerHTML = ''
+        getSongsDom()
+        //window.location.reload()
     }
     const cleanSongs = async () => {
         await setDoc(doc(db, 'domingo', 'listDom'), { dom: [] })
@@ -65,7 +68,7 @@ const Add = () => {
                 <i className='material-icons' onClick={() => cleanSongs()}>playlist_remove</i>
 
             </div>
-            <div className='addAdded'>
+            <div className='addAdded' id='deletear'>
 
                 {songsDom.map((s) => {
                     return (<div className='cancionesAdded' key={s.id}>

@@ -1,17 +1,43 @@
+body{
+    padding: 10px;
+}
 .labBody {
     display: grid;
-    grid-template-columns: 20% 40% 40%;
-    background-color: secondaryColor;
+    grid-template-columns: 35% 35% 30%;
+    background-color: black;
 
     .labList {
         grid-column: 1;
         font-size: 100%;
         color: white;
+        overflow: auto;
+        max-height: 100vh;
+        scrollbar-width: thin;
+        scrollbar-color: gray black;
+        padding-left: 5px;
+        padding-right: 5px;
+        
+        h3{
+            text-align: center;
+            background-color: black;
+            color:$primaryColor;
+            position: sticky;
+            top: 0;
+        
+            
+        }
+
         .listFlex {
             padding: 3px;
             border-bottom: solid 0.3px;
-            border-color: $primaryColor;
+            border-color: $secondaryColor;
             display: flex;
+            div{
+                padding-left: 5px;
+                small{
+                    color: gray;
+                }
+            }
             .iconBlock {
                 min-width: 40px;
             }
@@ -24,19 +50,31 @@
     }
     .labShow {
         grid-column: 2;
-        font-size: 100%;
-        padding: 10px;
-        background-color: $backgroundContColor;
-        .prevEncabezado {
-            min-height: 70px;
-            background-color: $secondaryColor;
-        }
+        font-size: 90%;
+        padding-left: 5px;
+        padding-right: 5px;
+       
+        background-color: $secondaryColor;
+        overflow: auto;
+        max-height: 100vh;
+        scrollbar-width: thin;
+        scrollbar-color: gray black;
         h3 {
-            i{
-                color: $primaryColor;
-                cursor: pointer;
-            }
+            text-align: center;
+            color: $primaryColor;
+            background-color: black;
+            position: sticky;
+            top: 0;
+            
+           
         }
+        .prevEncabezado {
+            min-height: 20px;
+            background-color: $secondaryColor;
+            color: $primaryColor;
+            padding-top: 5px;
+        }
+        
         .prevContenido {
             pre {
                 font-family: 'Ubuntu', sans-serif;
@@ -55,32 +93,72 @@
     .labEdit {
         grid-column: 3;
         padding: 3px;
-        background-color: $backgroundContColor;
+        background-color: $secondaryColor;
         color: $primaryColor;
-        height: 100%;
+        overflow: auto;
+        max-height: 100vh;
+        scrollbar-width: thin;
+        scrollbar-color: gray black;
+        padding-left: 5px;
+        padding-right: 5px;
+        
+        .topButtons{
+            display: flex;
+            justify-content: flex-end;
+            button{
+                
+                background-color: black;
+                color: gray;
+                border-radius: 7px;
+                padding: 5px;
+                border: solid 0.5px;
+
+                
+            }
+
+        }
+
+       
         h4 {
             text-align: center;
             background-color: $secondaryColor;
+            position: sticky;
+            top: 0;
         }
         form {
             color: white;
             input {
                 width: 100%;
+                background-color: black;
+                color: white;
+                border: solid 0.1px;
+                border-color: gray;
+                padding-left: 5px;
+                border-radius: 5px;
             }
             textarea {
                 width: 100%;
                 
                 font-family: 'Ubuntu', sans-serif;
+                padding: 5px;
+                background-color: black;
+                color: white;
+                border-radius: 5px;
+
+               
             }
             button {
                 border: none;
-                background-color: indigo;
-                color: white;
+                background-color: black;
+                color: $primaryColor;
                 border-radius: 7px;
                 padding: 5px;
+                border: solid 0.5px;
+                
+                
             }
             button:hover {
-                background-color: red;
+                background-color: gray;
             }
         }
     }

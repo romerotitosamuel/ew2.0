@@ -120,13 +120,11 @@ const Lab = () => {
             </div>
 
             <div className='labShow'>
-                <h3>Vista previa   <i className="material-icons" onClick={() => modoEditar(visualData.id)}>edit</i></h3>
+                <h3>Vista previa</h3>
                 <div className='prevEncabezado'>
                     {visualData.titulo} - <small>{visualData.artista}</small>
                 </div>
                 <div className='prevContenido'>
-
-
                     <pre id='vis'>
                         {acordeArray.map((line) => {
                             const m = line.substr(0, 2)
@@ -137,7 +135,6 @@ const Lab = () => {
                             }
                         })
                         }
-
                     </pre>
 
 
@@ -157,10 +154,14 @@ const Lab = () => {
 
             <div className='labEdit'>
                 <h4>Crear / Editar</h4>
-                <button onClick={() => ejecutar()}>Ejecutar</button>
-                <button onClick={() => ejecutarBajar()}>Bajar 1/2 Tono</button>
+                <div className='topButtons'>
+                    <button onClick={() => ejecutar()}>Ejecutar</button>
+                    <button onClick={() => ejecutarBajar()}>Bajar 1/2 Tono</button>
+                </div>
                 <form onSubmit={handlerSubmit} id='formulario'>
-                    <div><button type='submit'>{edition ? 'Actualizar' : 'Crear'}</button> </div>
+                    <div>
+                        <button type='submit'>{edition ? 'Actualizar' : 'Crear'}</button>
+                    </div>
                     <small>Título</small>
                     <input type="text" id='titulo' />
                     <small>Artista</small>

@@ -42,13 +42,19 @@ const Add = () => {
         let arraySab = arraySabSnap.data().sab
         arraySab.push(s)
         await setDoc(doc(db, 'sabado', 'listSab'), { sab: arraySab })
+
+        document.getElementById('deletear').innerHTML = ''
+        getSongsSab()
+
+
+
         //window.location.reload()
     }
     const cleanSongs = async () => {
         await setDoc(doc(db, 'sabado', 'listSab'), { sab: [] })
         window.location.reload()
     }
-
+    
     return (<>
         <div className="pagAdd">
 
@@ -64,7 +70,7 @@ const Add = () => {
 
             </div>
 
-            <div className='addAdded'>
+            <div className='addAdded' id='deletear'>
 
                 {songsSab.map( (s) => {
                     return( <div className='cancionesAdded' key={s.id}>

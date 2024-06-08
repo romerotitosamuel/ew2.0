@@ -53,6 +53,13 @@
         margin: 10px;
         border-width: 0.05px;
         border-radius: 10px;
+        min-height: 180px;
+        max-height: 180px;
+        overflow-y: auto;
+
+        scrollbar-color: rgba(209, 207, 207, 0.5) rgba(0, 0, 0, 0);
+        scrollbar-width: thin;
+        
         .cancionesAdded {
             padding: 5px;
             small {

@@ -7,12 +7,14 @@ import IconMusic from './icons/IconMusic'
 import IconLetter from './icons/IconLetter'
 import IconDown from './icons/IconDown'
 import IconYoutube from './icons/IconYoutube'
+import IconMetronome from './icons/IconMetronome'
 
 
 
 const Content = () => {
+    let chordOnInit = localStorage.getItem('chordOn')
     const [song] = useState(JSON.parse(localStorage.getItem('song')))
-    const [chordOn, setChordOn] = useState(false)
+    const [chordOn, setChordOn] = useState(chordOnInit)
     const [metro, setMetro] = useState(true)
     const [idTimer, setIdTimer] = useState(null)
     const [vidOn, setVidOn] = useState(true)
@@ -102,10 +104,10 @@ const Content = () => {
             <div className="blockButtons">
 
                 <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}><IconHome /></i></div>
-                <div onClick={() => setChordOn(false)}><i style={{ borderBottom: chordOn ? 'none' : 'solid' }} className="material-icons" ><IconLetter/></i></div>
-                <div onClick={() => setChordOn(true)}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" ><IconMusic/></i></div>
+                <div onClick={() => {setChordOn(false);localStorage.setItem('chordOn',false)}}><i style={{ borderBottom: chordOn ? 'none' : 'solid' }} className="material-icons" ><IconLetter/></i></div>
+                <div onClick={() => {setChordOn(true);localStorage.setItem('chordOn',true)}}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" ><IconMusic/></i></div>
                 <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" ><IconDown/></i></div>
-                <div style={{ display: song.bpm ? 'block' : 'none' }}><i className="material-icons" onClick={() => metronome(metro)}>{metro ? 'alarm_on' : 'alarm_off'}</i></div>
+                <div style={{ display: song.bpm ? 'block' : 'none' }}><i className="material-icons" onClick={() => metronome(metro)}><IconMetronome/></i></div>
                 <div onClick={() => setVidOn(!vidOn)}><i className="material-icons" ><IconYoutube/></i></div>
                 
 
