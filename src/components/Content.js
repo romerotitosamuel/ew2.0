@@ -20,14 +20,14 @@ const Content = () => {
     const [vidOn, setVidOn] = useState(true)
 
 
-    
+
     const songArray = song.letra.split(['\n\n'])
     const acordeArray = song.acordes.split(['\n'])
     let son = null
     const [play] = useSound(click1)
-    let widthW = window.screen.width
-    
-    
+
+
+
 
     const ejecutarBajar = () => {
         let contenido = document.getElementsByClassName('chord')
@@ -63,17 +63,9 @@ const Content = () => {
 
                 </div>
             </div>
-                <iframe
-                    width={widthW}
-                    height="70px"
-                    src={`https://www.youtube.com/embed/${song.url}`}
-                    frameborder="0"
-                    autohide="2"
-                    fs="0"
-                    style={{ display: vidOn ? "none" : "block" }}>
-                </iframe>
 
-            
+
+
             <div className="contentArea" style={{ height: '100%' }}>
                 <div className="contentLetra" style={{ display: chordOn ? "none" : "block" }}>
                     <pre>
@@ -100,19 +92,25 @@ const Content = () => {
                     </pre>
                 </div>
             </div>
-            
+            <iframe
+                src={`https://www.youtube.com/embed/${song.url}`}
+                frameborder="0"
+                autohide="2"
+                style={{ display: vidOn ? "none" : "block" }}>
+            </iframe>
             <div className="blockButtons">
 
                 <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}><IconHome /></i></div>
-                <div onClick={() => {setChordOn(false);localStorage.setItem('chordOn',false)}}><i style={{ borderBottom: chordOn ? 'none' : 'solid' }} className="material-icons" ><IconLetter/></i></div>
-                <div onClick={() => {setChordOn(true);localStorage.setItem('chordOn',true)}}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" ><IconMusic/></i></div>
-                <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" ><IconDown/></i></div>
-                <div style={{ display: song.bpm ? 'block' : 'none' }}><i className="material-icons" onClick={() => metronome(metro)}><IconMetronome/></i></div>
-                <div onClick={() => setVidOn(!vidOn)}><i className="material-icons" ><IconYoutube/></i></div>
-                
+                <div onClick={() => { setChordOn(false); localStorage.setItem('chordOn', false) }}><i style={{ borderBottom: chordOn ? 'none' : 'solid' }} className="material-icons" ><IconLetter /></i></div>
+                <div onClick={() => { setChordOn(true); localStorage.setItem('chordOn', true) }}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" ><IconMusic /></i></div>
+                <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" ><IconDown /></i></div>
+                <div style={{ display: song.bpm ? 'block' : 'none' }}><i className="material-icons" onClick={() => metronome(metro)}><IconMetronome /></i></div>
+                <div onClick={() => setVidOn(!vidOn)}><i className="material-icons" ><IconYoutube /></i></div>
+
 
             </div>
         </div>
     </>)
 }
 export default Content
+// 
