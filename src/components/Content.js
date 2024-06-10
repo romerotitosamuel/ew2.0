@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { downHalfTone } from './functions'
 import useSound from 'use-sound'
 import click1 from '../styles/sounds/click1.mp3'
@@ -11,13 +11,14 @@ import IconMetronome from './icons/IconMetronome'
 
 
 
+
 const Content = () => {
-    let chordOnInit = localStorage.getItem('chordOn')
     const [song] = useState(JSON.parse(localStorage.getItem('song')))
-    const [chordOn, setChordOn] = useState(chordOnInit)
+    const [chordOn, setChordOn] = useState(JSON.parse(localStorage.getItem('chordOn')))
     const [metro, setMetro] = useState(true)
     const [idTimer, setIdTimer] = useState(null)
     const [vidOn, setVidOn] = useState(true)
+   
 
 
 
@@ -105,7 +106,7 @@ const Content = () => {
                 <div onClick={() => { setChordOn(true); localStorage.setItem('chordOn', true) }}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" ><IconMusic /></i></div>
                 <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" ><IconDown /></i></div>
                 <div style={{ display: song.bpm ? 'block' : 'none' }}><i className="material-icons" onClick={() => metronome(metro)}><IconMetronome /></i></div>
-                <div onClick={() => setVidOn(!vidOn)}><i className="material-icons" ><IconYoutube /></i></div>
+                <div className="youtube1" onClick={() => setVidOn(!vidOn)}><i className="material-icons" id="youtube" ><IconYoutube /></i></div>
 
 
             </div>
