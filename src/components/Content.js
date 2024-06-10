@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { downHalfTone } from './functions'
+import { Link } from 'react-router-dom'
 import useSound from 'use-sound'
 import click1 from '../styles/sounds/click1.mp3'
 import IconHome from './icons/IconHome'
@@ -8,6 +9,7 @@ import IconLetter from './icons/IconLetter'
 import IconDown from './icons/IconDown'
 import IconYoutube from './icons/IconYoutube'
 import IconMetronome from './icons/IconMetronome'
+import IconLibrary from './icons/IconLibrary'
 
 
 
@@ -18,16 +20,20 @@ const Content = () => {
     const [metro, setMetro] = useState(true)
     const [idTimer, setIdTimer] = useState(null)
     const [vidOn, setVidOn] = useState(true)
-   
 
 
 
+    const songsDom = JSON.parse(localStorage.getItem('localSongsDom'))
     const songArray = song.letra.split(['\n\n'])
     const acordeArray = song.acordes.split(['\n'])
     let son = null
     const [play] = useSound(click1)
 
-
+    const enviarSong = (titulo, artista, bpm, url, letra, acordes) => {
+        const song = { titulo, artista, bpm, url, letra, acordes }
+        localStorage.setItem('song', JSON.stringify(song))
+        window.location.reload()
+    }
 
 
     const ejecutarBajar = () => {
@@ -54,6 +60,9 @@ const Content = () => {
         <div className="contentAll">
             <div className="contentHeader">
                 <div className='headerLeft'>
+                    <div  >
+                        <i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}><IconHome /></i>
+                    </div>
                     <div>
                         <div ><b>{song.titulo}</b></div>
                     </div>
@@ -99,9 +108,25 @@ const Content = () => {
                 autohide="2"
                 style={{ display: vidOn ? "none" : "block" }}>
             </iframe>
+            <div className='quickList'>
+                {
+                    songsDom.map((s) => {
+                        return (
+
+                            <Link to='#' className='link' key={s.id}>
+                                <div className='filaSong' onClick={() => enviarSong(s.titulo, s.artista, s.bpm, s.url, s.letra, s.acordes)}>
+                                    {s.titulo} <small>- {s.artista}</small>
+                                </div>
+                            </Link>
+                        )
+                    })
+                }
+
+            </div>
             <div className="blockButtons">
 
-                <div  ><i className="material-icons" onClick={() => { clearInterval(idTimer); window.history.back() }}><IconHome /></i></div>
+                <div className="youtube1" onClick={() => setVidOn(!vidOn)}><i className="material-icons" id="youtube" ><IconLibrary /></i></div>
+
                 <div onClick={() => { setChordOn(false); localStorage.setItem('chordOn', false) }}><i style={{ borderBottom: chordOn ? 'none' : 'solid' }} className="material-icons" ><IconLetter /></i></div>
                 <div onClick={() => { setChordOn(true); localStorage.setItem('chordOn', true) }}><i style={{ borderBottom: chordOn ? 'solid' : 'none' }} className="material-icons" ><IconMusic /></i></div>
                 <div><i style={{ color: chordOn ? "#65f32d" : "gray" }} onClick={() => ejecutarBajar()} className="material-icons" ><IconDown /></i></div>

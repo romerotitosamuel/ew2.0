@@ -17,11 +17,13 @@ const Home = () => {
 
         const arraySnap = await getDoc(doc(db, 'domingo', 'listDom'))
         const arraySongs = arraySnap.data().dom
+        //let paraLocal = []
 
         arraySongs.forEach(async (s) => {
             const songSnap = await getDoc(doc(db, 'canciones', s))
             const songWId = Object.assign(songSnap.data(), { id: s })
             setSongsDom(songsDom => [...songsDom, songWId])
+            //paraLocal.push(songWId)
         })
     }
     //PARA TRAER CANCIONES DEL SABADO
@@ -44,7 +46,7 @@ const Home = () => {
     useEffect(() => getSongsDom(), [])
     useEffect(() => getSongsSab(), [])
 
-    //if (window.navigator.onLine) { localStorage.setItem('localSongsDom', JSON.stringify(songsDom)) }
+    if (window.navigator.onLine) { localStorage.setItem('localSongsDom', JSON.stringify(songsDom)) }
 
     return (<>
         <div className='homePage'>
