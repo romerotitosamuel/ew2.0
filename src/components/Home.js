@@ -46,7 +46,10 @@ const Home = () => {
     useEffect(() => getSongsDom(), [])
     useEffect(() => getSongsSab(), [])
 
-    if (window.navigator.onLine) { localStorage.setItem('localSongsDom', JSON.stringify(songsDom)) }
+    if (window.navigator.onLine) {
+        localStorage.setItem('localSongsDom', JSON.stringify(songsDom));
+        localStorage.setItem('localSongsSab', JSON.stringify(songsSab))
+    }
 
     return (<>
         <div className='homePage'>
@@ -76,17 +79,15 @@ const Home = () => {
             </a  >
 
             <div className="domHome" >
-                {
-                    songsSab.map((s) => {
-                        return (
-
-                            <Link to='./content' className='link' key={s.id}>
-                                <div className='filaSong' onClick={() => enviarSong(s.titulo, s.artista, s.bpm, s.url, s.letra, s.acordes)}>
-                                    {s.titulo} <small>- {s.artista}</small>
-                                </div>
-                            </Link>
-                        )
-                    })
+                {songsSab.map((s) => {
+                    return (
+                        <Link to='./content' className='link' key={s.id}>
+                            <div className='filaSong' onClick={() => enviarSong(s.titulo, s.artista, s.bpm, s.url, s.letra, s.acordes)}>
+                                {s.titulo} <small>- {s.artista}</small>
+                            </div>
+                        </Link>
+                    )
+                })
                 }
             </div>
         </div>
