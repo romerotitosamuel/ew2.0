@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import logo600 from '../styles/images/logoWor600px.webp'
 import IconLibrary from './icons/IconLibrary'
+import IconYoutubeMusic from './icons/IconYoutubeMusic'
 
 const db = getFirestore(firebaseApp)
 
@@ -74,7 +75,7 @@ const Home = () => {
             </div>
 
             <a className='youtubeArea' href="https://music.youtube.com/playlist?list=PL_FgA7_oWUXKWcagYkqu2DW9z7IC-BiOu" target="_blank">
-                <i className="material-icons" >play_circle_outline</i>
+                <i className="material-icons" ><IconYoutubeMusic/></i>
                 <div>Playlist - Youtube Music</div>
             </a  >
 
