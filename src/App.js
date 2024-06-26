@@ -7,6 +7,7 @@ import Add2 from './components/Add2'
 import Home from './components/Home'
 import Content from './components/Content'
 import Lib from './components/Lib'
+import Crud from './components/Crud';
 import NoSleep from 'nosleep.js'
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/content" element={<Content />} />
           <Route path="/lib" element={<Lib />} />
           <Route path="/add2" element={<Add2 />} />
+          <Route path="/crud" element={<Crud />} />
 
         </Routes>
 
